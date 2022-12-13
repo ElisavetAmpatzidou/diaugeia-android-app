@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
             public void callback(Integer returnedObject) {
                 Integer s = returnedObject;
                 System.out.println("UOA 2020: "+s);
-
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -93,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                         uoaTxt3.setText("2022: "+s);
                     }
                 });
-
             }
         });
 
