@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         uoiTxt2=(TextView) findViewById(R.id.UoI2021);
         uoiTxt3=(TextView) findViewById(R.id.UoI2022);
 
+        University UoA = new University("UoA");
+        University UoM = new University("UoM");
+        University UoI = new University("UoI");
+
     }
     public void resultsOnClick(View v){
 
