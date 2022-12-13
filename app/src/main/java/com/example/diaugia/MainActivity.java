@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Integer> totalUoA=new ArrayList<>();
         ArrayList<Integer> totalUoI=new ArrayList<>();
-
 //UOA
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30","https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31",new CallbackListener<Integer>() {
             @Override
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         uoaTxt1.setText("2020: "+s);
                     }
                 });
