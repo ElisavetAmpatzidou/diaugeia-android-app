@@ -20,8 +20,9 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     private TextView pr2020,pr2021,pr2022,an2020,an2021,an2022,ded2020,ded2021,ded2022;
-    private TextView org;
+    private TextView org,units;
     private Button ba,bm,bi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class SecondActivity extends AppCompatActivity {
         ba=(Button) findViewById(R.id.uoaBtn);
         bm=(Button) findViewById(R.id.uomBtn);
         bi=(Button) findViewById(R.id.uoiBtn);
+        units=(TextView) findViewById(R.id.sumUnitstxt);
 
 
     }
@@ -58,6 +60,7 @@ public class SecondActivity extends AppCompatActivity {
         ba.setBackgroundColor(getResources().getColor(R.color.dia1));
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
         bi.setBackgroundColor(getResources().getColor(R.color.teal_700));
+        loading();
         org.setText("UoA");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -101,6 +104,21 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
+
+        //show Units
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active",new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                System.out.println("Units UoA ("+s.size()+"):"+ s);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        units.setText("Units UoA ("+s.size()+"):");
+                    }
+                });
+            }
+        });
     }
 
 //When Uom button is clicked
@@ -109,6 +127,7 @@ public class SecondActivity extends AppCompatActivity {
         bm.setBackgroundColor(getResources().getColor(R.color.dia1));
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
         bi.setBackgroundColor(getResources().getColor(R.color.teal_700));
+        loading();
         org.setText("UoM");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -154,6 +173,21 @@ public class SecondActivity extends AppCompatActivity {
 
             }
         });
+
+        //show Units
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active",new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                System.out.println("Units UoM ("+s.size()+"):"+ s);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        units.setText("Units UoM ("+s.size()+"):");
+                    }
+                });
+            }
+        });
     }
 
 //When UoI button is clicked
@@ -162,6 +196,7 @@ public class SecondActivity extends AppCompatActivity {
         bi.setBackgroundColor(getResources().getColor(R.color.dia1));
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
+        loading();
         org.setText("UoI");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -205,6 +240,21 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
+
+        //show Units
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206915/units.json?status=active",new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                System.out.println("Units UoI ("+s.size()+"):"+ s);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        units.setText("Units UoI ("+s.size()+"):");
+                    }
+                });
+            }
+        });
     }
 
 
@@ -214,15 +264,6 @@ public class SecondActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-//                     OkHttpHandler ok;
-//
-//                    int total =0;
-//                    ok=new OkHttpHandler();
-//                    String an=ok.callA(StringUrl);
-//
-//
-//                    System.out.println("results printing:"+an);
-//                    t.callback(total);
                     try {
                         URL url = new URL(StringUrl);
                         URL url2 = new URL(StringUrl2);
@@ -258,6 +299,57 @@ public class SecondActivity extends AppCompatActivity {
             });
             thread.start();
 
+        }
+
+    public static void getUnits(String StringUrl, CallbackListener<ArrayList<String>> u) {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    URL url = new URL(StringUrl);
+
+                    //make connection
+                    URLConnection urlc = url.openConnection();
+
+                    //use post mode
+                    //urlc.setDoOutput(true);
+                    urlc.setAllowUserInteraction(false);
+
+                    //get result
+                    ArrayList<String> units = new ArrayList<String>();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
+                    JSONObject obj = new JSONObject(br.readLine());
+
+                    for(int i=0;i<obj.getJSONArray("units").length();i++) {
+                        units.add(obj.getJSONArray("units").getJSONObject(i).getString("label"));
+                    }
+
+                    //get unit result
+                    u.callback(units);
+
+                    br.close();
+
+
+
+                } catch (IOException | JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
+        public void loading(){
+            pr2020.setText("loading...");
+            pr2021.setText("loading...");
+            pr2022.setText("loading...");
+            an2020.setText("loading...");
+            an2021.setText("loading...");
+            an2022.setText("loading...");
+            ded2020.setText("loading...");
+            ded2021.setText("loading...");
+            ded2022.setText("loading...");
         }
 
 
