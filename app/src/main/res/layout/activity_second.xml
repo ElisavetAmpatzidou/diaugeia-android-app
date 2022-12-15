@@ -158,7 +158,6 @@
         android:id="@+id/txt2020pr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
@@ -168,7 +167,6 @@
         android:id="@+id/txt2020an"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -178,7 +176,6 @@
         android:id="@+id/txt2020ded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
@@ -218,7 +215,6 @@
         android:id="@+id/txt2021pr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
@@ -228,7 +224,6 @@
         android:id="@+id/txt2021an"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -238,7 +233,6 @@
         android:id="@+id/txt2021ded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
@@ -248,7 +242,6 @@
         android:id="@+id/txt2022pr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
@@ -258,7 +251,6 @@
         android:id="@+id/txt2022an"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline17"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
@@ -268,7 +260,6 @@
         android:id="@+id/txt2022ded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="loading..."
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
@@ -283,5 +274,55 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="289dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline19">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center"
+        android:text="UNITS"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+
+    <TextView
+        android:id="@+id/sumUnitstxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/guideline10"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5978112" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
