@@ -275,11 +275,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
+
     <ScrollView
         android:layout_width="0dp"
-        android:layout_height="289dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline19">
@@ -287,8 +290,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/unitString"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text=""></TextView>
+
+        </LinearLayout>
     </ScrollView>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"

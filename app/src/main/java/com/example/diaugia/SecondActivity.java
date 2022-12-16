@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     private TextView pr2020,pr2021,pr2022,an2020,an2021,an2022,ded2020,ded2021,ded2022;
-    private TextView org,units;
+    private TextView org,units,unitString;
     private Button ba,bm,bi;
 
 
@@ -50,8 +50,7 @@ public class SecondActivity extends AppCompatActivity {
         bm=(Button) findViewById(R.id.uomBtn);
         bi=(Button) findViewById(R.id.uoiBtn);
         units=(TextView) findViewById(R.id.sumUnitstxt);
-
-
+        unitString=(TextView) findViewById(R.id.unitString);
     }
 
 //When UoA button is clicked
@@ -114,7 +113,12 @@ public class SecondActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        unitString.setText("");
                         units.setText("Units UoA ("+s.size()+"):");
+                        for (int i=1;i<=s.size();i++){
+                            int g =i;
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                        }
                     }
                 });
             }
@@ -183,7 +187,11 @@ public class SecondActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        unitString.setText("");
                         units.setText("Units UoM ("+s.size()+"):");
+                        for (int i=1;i<=s.size();i++){
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                        }
                     }
                 });
             }
@@ -250,7 +258,11 @@ public class SecondActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        unitString.setText("");
                         units.setText("Units UoI ("+s.size()+"):");
+                        for (int i=1;i<=s.size();i++){
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                        }
                     }
                 });
             }
