@@ -120,7 +120,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-
+        //show Units
         getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active", new CallbackListener<ArrayList<String>>() {
             @Override
             public void callback(ArrayList<String> returnedObject) {
@@ -139,26 +139,6 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
-//
-//        //show Units
-//        getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active",new CallbackListener<ArrayList<String>>() {
-//            @Override
-//            public void callback(ArrayList<String> returnedObject) {
-//                ArrayList<String> s = returnedObject;
-//                System.out.println("Units UoA ("+s.size()+"):"+ s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        unitString.setText("");
-//                        units.setText("Units UoA ("+s.size()+"):");
-//                        for (int i=1;i<=s.size();i++){
-//                            int g =i;
-//                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
-//                        }
-//                    }
-//                });
-//            }
-//        });
     }
 
 //When Uom button is clicked
@@ -221,6 +201,8 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
+
+        //show Units
         getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active", new CallbackListener<ArrayList<String>>() {
             @Override
             public void callback(ArrayList<String> returnedObject) {
@@ -239,25 +221,6 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
-
-//        //show Units
-//        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active",new CallbackListener<ArrayList<String>>() {
-//            @Override
-//            public void callback(ArrayList<String> returnedObject) {
-//                ArrayList<String> s = returnedObject;
-//                System.out.println("Units UoM ("+s.size()+"):"+ s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        unitString.setText("");
-//                        units.setText("Units UoM ("+s.size()+"):");
-//                        for (int i=1;i<=s.size();i++){
-//                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
-//                        }
-//                    }
-//                });
-//            }
-//        });
     }
 
 //When UoI button is clicked
@@ -318,6 +281,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        //show Units
         getUnits("https://diavgeia.gov.gr/opendata/organizations/99206915/units.json?status=active", new CallbackListener<ArrayList<String>>() {
             @Override
             public void callback(ArrayList<String> returnedObject) {
@@ -336,25 +300,6 @@ public class SecondActivity extends AppCompatActivity {
             });
         }
         });
-
-//        //show Units
-//        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206915/units.json?status=active",new CallbackListener<ArrayList<String>>() {
-//            @Override
-//            public void callback(ArrayList<String> returnedObject) {
-//                ArrayList<String> s = returnedObject;
-//                System.out.println("Units UoI ("+s.size()+"):"+ s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        unitString.setText("");
-//                        units.setText("Units UoI ("+s.size()+"):");
-//                        for (int i=1;i<=s.size();i++){
-//                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
-//                        }
-//                    }
-//                });
-//            }
-//        });
     }
 
     public static void getTotal(String StringUrl, String StringUrl2, String RevUrl, String RevUrl2, CallbackListener<ArrayList<Integer>> t) throws InterruptedException {
@@ -376,13 +321,9 @@ public class SecondActivity extends AppCompatActivity {
                     URLConnection revurlc2 = revurl2.openConnection();
 
                     //use post mode
-                    //urlc.setDoOutput(true);
                     urlc.setAllowUserInteraction(false);
-                    //urlc2.setDoOutput(true);
                     urlc2.setAllowUserInteraction(false);
-//                    revurlc.setDoOutput(true);
                     revurlc.setAllowUserInteraction(false);
-//                    revurlc2.setDoOutput(true);
                     revurlc2.setAllowUserInteraction(false);
 
                     //get result
@@ -447,7 +388,6 @@ public class SecondActivity extends AppCompatActivity {
                     URLConnection urlc = url.openConnection();
 
                     //use post mode
-//                    urlc.setDoOutput(true);
                     urlc.setAllowUserInteraction(false);
 
                     //get result
