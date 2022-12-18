@@ -121,7 +121,24 @@ public class SecondActivity extends AppCompatActivity {
         });
 
 
-
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active", new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                UoA.setUnits(s);
+                UoA.setUnitsSize(s.size());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        unitString.setText("");
+                        units.setText("Units UoA (" + UoA.getUnitsSize() + "):");
+                        for (int i = 1; i <= UoA.getUnitsSize(); i++) {
+                            unitString.setText(unitString.getText() + "" + i + ")" + UoA.getUnits().get(i - 1) + "\n");
+                        }
+                    }
+                });
+            }
+        });
 //
 //        //show Units
 //        getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active",new CallbackListener<ArrayList<String>>() {
@@ -204,6 +221,24 @@ public class SecondActivity extends AppCompatActivity {
                 });
             }
         });
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active", new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                UoM.setUnits(s);
+                UoM.setUnitsSize(s.size());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    unitString.setText("");
+                    units.setText("Units UoM ("+UoM.getUnitsSize()+"):");
+                    for (int i=1;i<=UoM.getUnitsSize();i++) {
+                        unitString.setText(unitString.getText() + "" + i + ")" +  UoM.getUnits().get(i - 1) + "\n");
+                    }
+                    }
+                });
+            }
+        });
 
 //        //show Units
 //        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active",new CallbackListener<ArrayList<String>>() {
@@ -281,6 +316,25 @@ public class SecondActivity extends AppCompatActivity {
                         ded2022.setText(UoI.getDecisions().get(2).getPneumatika().toString());                        }
                 });
             }
+        });
+
+        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206915/units.json?status=active", new CallbackListener<ArrayList<String>>() {
+            @Override
+            public void callback(ArrayList<String> returnedObject) {
+                ArrayList<String> s = returnedObject;
+                UoI.setUnits(s);
+                UoI.setUnitsSize(s.size());
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                    unitString.setText("");
+                    units.setText("Units UoI ("+UoI.getUnitsSize()+"):");
+                    for (int i=1;i<=UoI.getUnitsSize();i++) {
+                        unitString.setText(unitString.getText() + "" + i + ")" +  UoI.getUnits().get(i - 1) + "\n");
+                    }
+                }
+            });
+        }
         });
 
 //        //show Units
