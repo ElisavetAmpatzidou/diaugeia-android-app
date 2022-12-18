@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class University {
     private String name;
-    private ArrayList<Decisions> allDec = new ArrayList<>();
+    private ArrayList<Decision> allDec = new ArrayList<>();
     private Integer unitsSize;
     private ArrayList<Integer> totals = new ArrayList<>();
     private ArrayList<String> units = new ArrayList<>();
@@ -13,11 +13,17 @@ public class University {
         this.name = name;
     }
 
-    public void setDecisions(ArrayList<Integer> p, String year) {
-        allDec.add(new Decisions(p, year));
+    public void setDecisions(ArrayList<Integer> p, Integer year) {
+        //initialize arrayList allDec
+        for (int i=0;i<4;i++) {allDec.add(new Decision(p, -1));}
+
+        if (year==2020) allDec.add(0, new Decision(p, year));
+        else if (year== 2021) allDec.add(1, new Decision(p, year));
+        else if (year==2022) allDec.add(2, new Decision(p, year));
+        else System.out.println("IM OUT");
     }
 
-    public ArrayList<Decisions> getDecisions() {
+    public ArrayList<Decision> getDecisions() {
         return allDec;
     }
 

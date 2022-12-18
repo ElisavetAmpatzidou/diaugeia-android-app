@@ -2,25 +2,25 @@ package com.example.diaugia;
 
 import java.util.ArrayList;
 
-public class Decisions {
-    private Integer praxeisSize = -1;
+public class Decision {
+    private Integer decisionsSize = -1;
     private Integer anakliseis =-1;
     private Integer pneumatika =-1;
-    String year;
+    Integer year;
 
-    public Decisions(ArrayList<Integer> praxeis, String year) {
+    public Decision(ArrayList<Integer> praxeis, Integer year) {
         this.year = year;
-        this.praxeisSize = praxeis.get(0);
+        this.decisionsSize = praxeis.get(0);
         this.anakliseis = praxeis.get(1);
         this.pneumatika = praxeis.get(2);
     }
 
     public Integer getPraxeisSize() {
-        return praxeisSize;
+        return decisionsSize;
     }
 
     public void setPraxeisSize(Integer praxeisSize) {
-        this.praxeisSize = praxeisSize;
+        this.decisionsSize = praxeisSize;
     }
 
     public Integer getAnakliseis() {
@@ -39,11 +39,8 @@ public class Decisions {
         this.pneumatika = pneumatika;
     }
 
-    public String getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(String year) {
-        this.year = year;
-    }
 }
