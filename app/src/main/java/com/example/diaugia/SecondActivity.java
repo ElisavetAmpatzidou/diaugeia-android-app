@@ -60,6 +60,8 @@ public class SecondActivity extends AppCompatActivity {
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
         bi.setBackgroundColor(getResources().getColor(R.color.teal_700));
         loading();
+        units.setText("");
+        unitString.setText("");
         org.setText("UoA");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -117,7 +119,7 @@ public class SecondActivity extends AppCompatActivity {
                         units.setText("Units UoA ("+s.size()+"):");
                         for (int i=1;i<=s.size();i++){
                             int g =i;
-                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
                         }
                     }
                 });
@@ -132,6 +134,8 @@ public class SecondActivity extends AppCompatActivity {
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
         bi.setBackgroundColor(getResources().getColor(R.color.teal_700));
         loading();
+        units.setText("");
+        unitString.setText("");
         org.setText("UoM");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -190,7 +194,7 @@ public class SecondActivity extends AppCompatActivity {
                         unitString.setText("");
                         units.setText("Units UoM ("+s.size()+"):");
                         for (int i=1;i<=s.size();i++){
-                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
                         }
                     }
                 });
@@ -205,6 +209,8 @@ public class SecondActivity extends AppCompatActivity {
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
         loading();
+        units.setText("");
+        unitString.setText("");
         org.setText("UoI");
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
             @Override
@@ -261,7 +267,7 @@ public class SecondActivity extends AppCompatActivity {
                         unitString.setText("");
                         units.setText("Units UoI ("+s.size()+"):");
                         for (int i=1;i<=s.size();i++){
-                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+" | ");
+                            unitString.setText(unitString.getText()+""+i+")"+s.get(i-1)+"\n");
                         }
                     }
                 });
