@@ -15,11 +15,11 @@ public class Decision {
         this.pneumatika = praxeis.get(2);
     }
 
-    public Integer getPraxeisSize() {
+    public Integer getDesicionSize() {
         return decisionsSize;
     }
 
-    public void setPraxeisSize(Integer praxeisSize) {
+    public void setDesicionSize(Integer praxeisSize) {
         this.decisionsSize = praxeisSize;
     }
 

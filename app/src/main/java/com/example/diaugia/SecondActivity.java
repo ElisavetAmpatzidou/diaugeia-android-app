@@ -22,6 +22,9 @@ public class SecondActivity extends AppCompatActivity {
     private TextView pr2020,pr2021,pr2022,an2020,an2021,an2022,ded2020,ded2021,ded2022;
     private TextView org,units,unitString;
     private Button ba,bm,bi;
+    private University UoA = new University("UoA");
+    private University UoM = new University("UoM");
+    private University UoI = new University("UoI");
 
 
     @Override
@@ -54,7 +57,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 //When UoA button is clicked
-    public void firstButtonOnClick(View v) {
+    public void firstButtonOnClick(View v) throws InterruptedException {
         //UOA
         ba.setBackgroundColor(getResources().getColor(R.color.dia1));
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
@@ -63,48 +66,62 @@ public class SecondActivity extends AppCompatActivity {
         units.setText("");
         unitString.setText("");
         org.setText("UoA");
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOA 2020: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2020.setText(s.toString());
-//                    }
-//                });
-//            }
-//        });
-//
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-07-01&to_issue_date=2021-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOA 2021: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2021.setText(s.toString());
-//                    }
-//                });
-//            }
-//        });
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-07-01&to_issue_date=2022-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOA 2022: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2022.setText(s.toString());
-//                    }
-//                });
-//            }
-//        });
+
+//UoA
+        //TOTAL PRAKSEIS
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoA.setDecisions(s, 2020);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2020.setText(UoA.getDecisions().get(0).getDesicionSize().toString());
+                        an2020.setText(UoA.getDecisions().get(0).getAnakliseis().toString());
+                        ded2020.setText(UoA.getDecisions().get(0).getPneumatika().toString());                    }
+                });
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-07-01&to_issue_date=2021-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-01-01&to_issue_date=2021-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2021-07-01&to_issue_date=2021-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoA.setDecisions(s, 2021);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2021.setText(UoA.getDecisions().get(1).getDesicionSize().toString());
+                        an2021.setText(UoA.getDecisions().get(1).getAnakliseis().toString());
+                        ded2021.setText(UoA.getDecisions().get(1).getPneumatika().toString());
+                    }
+                });
+
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-07-01&to_issue_date=2022-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-01-01&to_issue_date=2022-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2022-07-01&to_issue_date=2022-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoA.setDecisions(s, 2022);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2022.setText(UoA.getDecisions().get(2).getDesicionSize().toString());
+                        an2022.setText(UoA.getDecisions().get(2).getAnakliseis().toString());
+                        ded2022.setText(UoA.getDecisions().get(2).getPneumatika().toString());                    }
+                });
+
+            }
+        });
+
+
+
 //
 //        //show Units
 //        getUnits("https://diavgeia.gov.gr/opendata/organizations/99203020/units.json?status=active",new CallbackListener<ArrayList<String>>() {
@@ -128,7 +145,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 //When Uom button is clicked
-    public void secondButtonOnClick(View v) {
+    public void secondButtonOnClick(View v) throws InterruptedException {
         //UOM
         bm.setBackgroundColor(getResources().getColor(R.color.dia1));
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
@@ -137,51 +154,57 @@ public class SecondActivity extends AppCompatActivity {
         units.setText("");
         unitString.setText("");
         org.setText("UoM");
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOM 2020: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2020.setText(s.toString());
-//                    }
-//                });
-//
-//            }
-//        });
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-07-01&to_issue_date=2021-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOM 2021: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2021.setText(s.toString());
-//                    }
-//                });
-//
-//            }
-//        });
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-07-01&to_issue_date=2022-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOM 2022: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2022.setText(s.toString());
-//                    }
-//                });
-//
-//            }
-//        });
-//
+
+        //UoM
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoM.setDecisions(s, 2020);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2020.setText(UoM.getDecisions().get(0).getDesicionSize().toString());
+                        an2020.setText(UoM.getDecisions().get(0).getAnakliseis().toString());
+                        ded2020.setText(UoM.getDecisions().get(0).getPneumatika().toString());                    }
+                });
+
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-07-01&to_issue_date=2021-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-01-01&to_issue_date=2021-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2021-07-01&to_issue_date=2021-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoM.setDecisions(s, 2021);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2021.setText(UoM.getDecisions().get(1).getDesicionSize().toString());
+                        an2021.setText(UoM.getDecisions().get(1).getAnakliseis().toString());
+                        ded2021.setText(UoM.getDecisions().get(1).getPneumatika().toString());                    }
+                });
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-07-01&to_issue_date=2022-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-01-01&to_issue_date=2022-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2022-07-01&to_issue_date=2022-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoM.setDecisions(s, 2022);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2022.setText(UoM.getDecisions().get(2).getDesicionSize().toString());
+                        an2022.setText(UoM.getDecisions().get(2).getAnakliseis().toString());
+                        ded2022.setText(UoM.getDecisions().get(2).getPneumatika().toString());                    }
+                });
+            }
+        });
+
 //        //show Units
 //        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206919/units.json?status=active",new CallbackListener<ArrayList<String>>() {
 //            @Override
@@ -203,7 +226,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 //When UoI button is clicked
-    public void ThirdButtonOnClick(View v) {
+    public void ThirdButtonOnClick(View v) throws InterruptedException {
 //UOI
         bi.setBackgroundColor(getResources().getColor(R.color.dia1));
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
@@ -212,49 +235,54 @@ public class SecondActivity extends AppCompatActivity {
         units.setText("");
         unitString.setText("");
         org.setText("UoI");
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-07-01&to_issue_date=2020-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOI 2020: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2020.setText( s.toString());
-//                    }
-//                });
-//
-//            }
-//        });
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-07-01&to_issue_date=2021-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOI 2021: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2021.setText( s.toString());
-//                    }
-//                });
-//            }
-//        });
-//
-//        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-07-01&to_issue_date=2022-12-31", new CallbackListener<Integer>() {
-//            @Override
-//            public void callback(Integer returnedObject) {
-//                Integer s = returnedObject;
-//                System.out.println("UOI 2022: " + s);
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        pr2022.setText(s.toString());
-//                    }
-//                });
-//            }
-//        });
-//
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-07-01&to_issue_date=2020-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-01-01&to_issue_date=2020-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2020-07-01&to_issue_date=2020-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoI.setDecisions(s, 2020);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2020.setText(UoI.getDecisions().get(0).getDesicionSize().toString());
+                        an2020.setText(UoI.getDecisions().get(0).getAnakliseis().toString());
+                        ded2020.setText(UoI.getDecisions().get(0).getPneumatika().toString());                       }
+                });
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-01-01&to_issue_date=2021-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-07-01&to_issue_date=2021-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-01-01&to_issue_date=2021-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2021-07-01&to_issue_date=2021-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoI.setDecisions(s, 2021);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2021.setText(UoI.getDecisions().get(1).getDesicionSize().toString());
+                        an2021.setText(UoI.getDecisions().get(1).getAnakliseis().toString());
+                        ded2021.setText(UoI.getDecisions().get(1).getPneumatika().toString());                        }
+                });
+            }
+        });
+
+        getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-01-01&to_issue_date=2022-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-07-01&to_issue_date=2022-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-01-01&to_issue_date=2022-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206915&from_issue_date=2022-07-01&to_issue_date=2022-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
+            @Override
+            public void callback(ArrayList<Integer> returnedObject) {
+                ArrayList<Integer> s = returnedObject;
+                UoI.setDecisions(s, 2022);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pr2022.setText(UoI.getDecisions().get(2).getDesicionSize().toString());
+                        an2022.setText(UoI.getDecisions().get(2).getAnakliseis().toString());
+                        ded2022.setText(UoI.getDecisions().get(2).getPneumatika().toString());                        }
+                });
+            }
+        });
+
 //        //show Units
 //        getUnits("https://diavgeia.gov.gr/opendata/organizations/99206915/units.json?status=active",new CallbackListener<ArrayList<String>>() {
 //            @Override
@@ -281,15 +309,6 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-//                     OkHttpHandler ok;
-//
-//                    int total =0;
-//                    ok=new OkHttpHandler();
-//                    String an=ok.callA(StringUrl);
-//
-//
-//                    System.out.println("results printing:"+an);
-//                    t.callback(total);
                 try {
                     URL url = new URL(StringUrl);
                     URL url2 = new URL(StringUrl2);
