@@ -17,9 +17,6 @@
         android:theme="@style/Theme.Diaugia"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".SecondActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.actions"
