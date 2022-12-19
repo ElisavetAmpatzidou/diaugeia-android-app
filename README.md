@@ -2,7 +2,7 @@
 
 <h4> Diaugia is an android application that was created for the purpose of the coursework in "E-Governence" course of University of Macedonia (Applied Informatics - UoM, 2022, 7th Semester)</h4>
 
-<p>This app makes API calls from <a href=">https://diavgeia.gov.gr/"><b><i>diavgeia.gov.gr</i></b></a> and displays results for 3 Greek Universities:</p>
+<p>This app makes API calls from <a href="https://diavgeia.gov.gr/"><b><i>diavgeia.gov.gr</i></b></a> and displays results for 3 Greek Universities:</p>
 <ol>
   <li><i>University Of Athens</i></li>
   <li><i>University Of Macedonia (Thessaloniki)</i></li>
