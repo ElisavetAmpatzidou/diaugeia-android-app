@@ -7,7 +7,7 @@
   <li><i>University of Ioannina</i></li>
 </ol>
 
-<h4>It shows number of decisions, revoked decisions, private data of revoked decisions a University did in 2020, 2021 and 2022. 
+<h4>It shows number of decisions, number of revoked decisions and number of revoked decisions having private data for years 2020, 2021, 2022. 
   It, also, displays the Units size of each University and the content of Units.</h4>
   
 <p>This app was created for the purpose of coursework in "E-Governence" course of University of Macedonia (Applied Informatics - UoM, 2022, 7th Semester)</p>
