@@ -29,7 +29,7 @@ import java.util.ArrayList;
             2. University Of Macedonia (Thessaloniki)
             3. University of Ioannina
 
-    It shows number of decisions, revoked decisions, private data of revoked decisions
+    It shows number of decisions, number of revoked decisions and number of revoked decisions having private data
     for years 2020, 2021, 2022.
 
     This app, also, displays the Units size of each University and the content of Units.
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         pr2020=(TextView) findViewById(R.id.txt2020pr);
         pr2021=(TextView) findViewById(R.id.txt2021pr);
@@ -79,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
         unitString.setText("");
         org.setText("UoA");
 
-//UoA
-        //TOTAL PRAKSEIS
+
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-01-01&to_issue_date=2020-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99203020&from_issue_date=2020-07-01&to_issue_date=2020-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
             @Override
             public void callback(ArrayList<Integer> returnedObject) {
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2020.setText(UoA.getDecisions().get(0).getDesicionSize().toString());
                         an2020.setText(UoA.getDecisions().get(0).getAnakliseis().toString());
-                        pd2020.setText(UoA.getDecisions().get(0).getPneumatika().toString());                    }
+                        pd2020.setText(UoA.getDecisions().get(0).getPrivateData().toString());                    }
                 });
             }
         });
@@ -108,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2021.setText(UoA.getDecisions().get(1).getDesicionSize().toString());
                         an2021.setText(UoA.getDecisions().get(1).getAnakliseis().toString());
-                        pd2021.setText(UoA.getDecisions().get(1).getPneumatika().toString());
+                        pd2021.setText(UoA.getDecisions().get(1).getPrivateData().toString());
                     }
                 });
 
@@ -126,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2022.setText(UoA.getDecisions().get(2).getDesicionSize().toString());
                         an2022.setText(UoA.getDecisions().get(2).getAnakliseis().toString());
-                        pd2022.setText(UoA.getDecisions().get(2).getPneumatika().toString());                    }
+                        pd2022.setText(UoA.getDecisions().get(2).getPrivateData().toString());                    }
                 });
 
             }
@@ -164,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
         unitString.setText("");
         org.setText("UoM");
 
-        //UoM
         getTotal("https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-30", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-01-01&to_issue_date=2020-06-31&status=REVOKED", "https://diavgeia.gov.gr/opendata/search.json?org=99206919&from_issue_date=2020-07-01&to_issue_date=2020-12-31&status=REVOKED", new CallbackListener<ArrayList<Integer>>() {
             @Override
             public void callback(ArrayList<Integer> returnedObject) {
@@ -176,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2020.setText(UoM.getDecisions().get(0).getDesicionSize().toString());
                         an2020.setText(UoM.getDecisions().get(0).getAnakliseis().toString());
-                        pd2020.setText(UoM.getDecisions().get(0).getPneumatika().toString());                    }
+                        pd2020.setText(UoM.getDecisions().get(0).getPrivateData().toString());                    }
                 });
 
             }
@@ -193,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2021.setText(UoM.getDecisions().get(1).getDesicionSize().toString());
                         an2021.setText(UoM.getDecisions().get(1).getAnakliseis().toString());
-                        pd2021.setText(UoM.getDecisions().get(1).getPneumatika().toString());                    }
+                        pd2021.setText(UoM.getDecisions().get(1).getPrivateData().toString());                    }
                 });
             }
         });
@@ -209,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2022.setText(UoM.getDecisions().get(2).getDesicionSize().toString());
                         an2022.setText(UoM.getDecisions().get(2).getAnakliseis().toString());
-                        pd2022.setText(UoM.getDecisions().get(2).getPneumatika().toString());                    }
+                        pd2022.setText(UoM.getDecisions().get(2).getPrivateData().toString());                    }
                 });
             }
         });
@@ -237,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
 
     //When UoI button is clicked
     public void ThirdButtonOnClick(View v) throws InterruptedException {
-//UOI
+        //UOI
         bi.setBackgroundColor(getResources().getColor(R.color.dia1));
         bm.setBackgroundColor(getResources().getColor(R.color.teal_700));
         ba.setBackgroundColor(getResources().getColor(R.color.teal_700));
@@ -256,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2020.setText(UoI.getDecisions().get(0).getDesicionSize().toString());
                         an2020.setText(UoI.getDecisions().get(0).getAnakliseis().toString());
-                        pd2020.setText(UoI.getDecisions().get(0).getPneumatika().toString());                       }
+                        pd2020.setText(UoI.getDecisions().get(0).getPrivateData().toString());                       }
                 });
             }
         });
@@ -272,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2021.setText(UoI.getDecisions().get(1).getDesicionSize().toString());
                         an2021.setText(UoI.getDecisions().get(1).getAnakliseis().toString());
-                        pd2021.setText(UoI.getDecisions().get(1).getPneumatika().toString());                        }
+                        pd2021.setText(UoI.getDecisions().get(1).getPrivateData().toString());                        }
                 });
             }
         });
@@ -288,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         pr2022.setText(UoI.getDecisions().get(2).getDesicionSize().toString());
                         an2022.setText(UoI.getDecisions().get(2).getAnakliseis().toString());
-                        pd2022.setText(UoI.getDecisions().get(2).getPneumatika().toString());                        }
+                        pd2022.setText(UoI.getDecisions().get(2).getPrivateData().toString());                        }
                 });
             }
         });
@@ -338,42 +335,40 @@ public class MainActivity extends AppCompatActivity {
                     revurlc.setAllowUserInteraction(false);
                     revurlc2.setAllowUserInteraction(false);
 
-                    //get result
+                    //this arrayList will have all the results -> [number of decisions, number of revoked decisions, number of revoked decisions with private data] for each University
                     ArrayList<Integer> totals = new ArrayList<Integer>();
+
+                    //get num of decisions  result
                     BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
-                    JSONObject obj = new JSONObject(br.readLine());
-
                     BufferedReader br2 = new BufferedReader(new InputStreamReader(urlc2.getInputStream()));
-                    JSONObject obj2 = new JSONObject(br2.readLine());
-                    totals.add(obj.getJSONObject("info").getInt("total") + obj2.getJSONObject("info").getInt("total"));
 
-                    //get anakliseis result
+                    JSONObject decisions1 = new JSONObject(br.readLine());
+                    JSONObject decisions2 = new JSONObject(br2.readLine());
+                    totals.add(decisions1.getJSONObject("info").getInt("total") + decisions2.getJSONObject("info").getInt("total"));
+
+                    //get num of revoked decisions result
                     BufferedReader br3 = new BufferedReader(new InputStreamReader(revurlc.getInputStream()));
-                    JSONObject obj3 = new JSONObject(br3.readLine());
-
                     BufferedReader br4 = new BufferedReader(new InputStreamReader(revurlc2.getInputStream()));
-                    JSONObject obj4 = new JSONObject(br4.readLine());
 
-                    //get pneumatika dikaiomata result
-                    totals.add(obj3.getJSONObject("info").getInt("total") + obj4.getJSONObject("info").getInt("total"));
+                    JSONObject revokedDec1 = new JSONObject(br3.readLine());
+                    JSONObject revokedDec2 = new JSONObject(br4.readLine());
 
-                    Integer count =0;
-                    for (int i = 0; i < obj3.getJSONArray("decisions").length(); i++) {
-                        Boolean a = obj3.getJSONArray("decisions").getJSONObject(i).getBoolean("privateData");
+                    totals.add(revokedDec1.getJSONObject("info").getInt("total") + revokedDec2.getJSONObject("info").getInt("total"));
 
-                        if (a) {
-                            count++;
-                        }
+                    //get num of private data results
+                    Integer count = 0;
+                    for (int i = 0; i < revokedDec1.getJSONArray("decisions").length(); i++) {
+                        Boolean privateData1 = revokedDec1.getJSONArray("decisions")
+                                .getJSONObject(i).getBoolean("privateData");
+                        if (privateData1) count++;
                     }
-
-                    for (int i = 0; i < obj4.getJSONArray("decisions").length(); i++) {
-                        Boolean a = obj4.getJSONArray("decisions").getJSONObject(i).getBoolean("privateData");
-                        if (a) {
-                            count++;
-                        }
+                    for (int i = 0; i < revokedDec2.getJSONArray("decisions").length(); i++) {
+                        Boolean privateData2 = revokedDec2.getJSONArray("decisions")
+                                .getJSONObject(i).getBoolean("privateData");
+                        if (privateData2) count++;
                     }
-
                     totals.add(count);
+
                     t.callback(totals);
 
                     br.close();
@@ -402,7 +397,7 @@ public class MainActivity extends AppCompatActivity {
                     //use post mode
                     urlc.setAllowUserInteraction(false);
 
-                    //get result
+                    //get content of Units
                     ArrayList<String> units = new ArrayList<String>();
                     BufferedReader br = new BufferedReader(new InputStreamReader(urlc.getInputStream()));
                     JSONObject obj = new JSONObject(br.readLine());
@@ -411,7 +406,7 @@ public class MainActivity extends AppCompatActivity {
                         units.add(obj.getJSONArray("units").getJSONObject(i).getString("label"));
                     }
 
-                    //get unit result
+                    //get units result
                     u.callback(units);
                     br.close();
 
