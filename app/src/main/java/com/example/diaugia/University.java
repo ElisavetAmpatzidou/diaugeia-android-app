@@ -27,28 +27,12 @@ public class University {
         return allDec;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getUnitsSize() {
         return unitsSize;
     }
 
     public void setUnitsSize(Integer unitsSize) {
         this.unitsSize = unitsSize;
-    }
-
-    public ArrayList<Integer> getTotals() {
-        return totals;
-    }
-
-    public void setTotals(ArrayList<Integer> totals) {
-        this.totals = totals;
     }
 
     public ArrayList<String> getUnits() {

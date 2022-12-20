@@ -19,24 +19,12 @@ public class Decision {
         return decisionsSize;
     }
 
-    public void setDesicionSize(Integer praxeisSize) {
-        this.decisionsSize = praxeisSize;
-    }
-
     public Integer getAnakliseis() {
         return anakliseis;
     }
 
-    public void setAnakliseis(Integer anakliseis) {
-        this.anakliseis = anakliseis;
-    }
-
     public Integer getPneumatika() {
         return pneumatika;
-    }
-
-    public void setPneumatika(Integer pneumatika) {
-        this.pneumatika = pneumatika;
     }
 
     public Integer getYear() {
